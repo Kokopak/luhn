@@ -2,15 +2,13 @@
 #-*- coding: utf-8-*-
 
 def luhn(nombre):
-    listeLuhn = []
-    for index, chiffre in enumerate(reversed([int(x) for x in list(str(nombre))])) :
-        if index % 2 == 0:
-            listeLuhn.append(chiffre)
+    l = []
+    for i,  n in enumerate(reversed([int(x) for x in list(str(nombre))])) :
+        if i % 2 == 0:
+            l.append(n)
         else:
-            d = 2 * chiffre
-            n1, n2 = d/10, d%10 
-            listeLuhn.append(n1+n2)
-    return sum(listeLuhn)
+            l.append((2*n)/10 + (2*n)%10)
+    return sum(l)
 
 def isValide(n):
     return luhn(n) % 10 == 0
