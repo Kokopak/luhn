@@ -2,13 +2,10 @@
 #-*- coding: utf-8-*-
 
 def luhn(nombre):
-    l = []
-    for i,  n in enumerate(reversed([int(x) for x in list(str(nombre))])) :
-        if i % 2 == 0:
-            l.append(n)
-        else:
-            l.append((2*n)/10 + (2*n)%10)
-    return sum(l)
+    return sum([(2*n)/10 + (2*n)%10 if i % 2 else n
+        for i, n in 
+        enumerate(reversed([int(x) for x in list(str(nombre))]))
+    ])
 
 def isValide(n):
     return luhn(n) % 10 == 0
